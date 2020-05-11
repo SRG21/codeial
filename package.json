@@ -1,0 +1,23 @@
+{
+  "name": "codial",
+  "version": "1.0.0",
+  "description": "social media site",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "keywords": [
+    "The",
+    "new-age",
+    "social",
+    "media",
+    "site"
+  ],
+  "author": "SRG ITERATEs",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.3"
+  }
+}
