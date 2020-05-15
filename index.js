@@ -9,7 +9,15 @@ const session = require('express-session');
 const passport = require('passport');
 const passportlocal = require('./config/passport-local-startegy'); 
 const MongoStore = require('connect-mongo')(session); // used to provide storage of cookies in server other-wise all the session cookies are deleted on server restart
+const sassMiddleware = require('node-sass-middleware');
 
+app.use(sassMiddleware({ // the conversion should take place before the server starts
+    src: './assets/scss',
+    dest: './assets/css',
+    debug: true,
+    outputStyle: 'extended',
+    prefix: '/css'
+})); // the css files will appear when the page is loaded in the browser and not when server is started after new scss creation
 
 
 app.use(express.urlencoded()); // parser
