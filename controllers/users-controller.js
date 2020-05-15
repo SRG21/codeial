@@ -3,19 +3,27 @@ console.log("Setting-up user controller..........")
 const User = require('../models/user');
 
 module.exports.profile = function(req, res){
-    res.render('profile',{
-        title: "Your Profile"
-    });
+    return res.render('profile',{
+            title: "Your Profile"
+        });
 }
 
 module.exports.signUp = function(req, res){
-    res.render('profile_sign_up', {
-        title: "Codial| Sign-Up"
-    });
+    if(req.isAuthenticated()){
+        return res.redirect('/profile');
+    }
+   
+    return res.render('profile_sign_up', {
+                title: "Codial| Sign-Up"
+            });
 }
 
 module.exports.signIn = function(req, res){
-    res.render('profile_sign_in', {
+    if(req.isAuthenticated()){
+        return res.redirect('/profile');
+    }
+
+    return res.render('profile_sign_in', {
         title: "Codial| Sign-In"
     });
 }
@@ -49,3 +57,8 @@ module.exports.createSession = function(req,res){
 }
 
 console.log("user controller setup complete!");
+
+module.exports.destroySession = function(req,res){
+    req.logout();
+    return res.redirect('/profile/sign-in');
+}

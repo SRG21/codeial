@@ -58,4 +58,7 @@ passport.setAuthenticatedUser = function(req,res,next){
         // cpoying data from req.user to res.local
         res.locals.user = req.user;
     }
+    next();
 }
+
+module.exports = passport;
