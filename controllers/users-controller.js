@@ -1,3 +1,5 @@
+console.log("Setting-up user controller..........")
+
 const User = require('../models/user');
 
 module.exports.profile = function(req, res){
@@ -43,5 +45,7 @@ module.exports.create = function(req,res){
 
 
 module.exports.createSession = function(req,res){
-    // to do later
+    res.redirect('/profile');
 }
+
+console.log("user controller setup complete!");

@@ -1,3 +1,5 @@
+console.log("Setting up DB Schema................");
+
 const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
@@ -20,4 +22,5 @@ const userSchema = new mongoose.Schema({
 
 const User = mongoose.model('user', userSchema);
 
+console.log("DB-Schema set-up completed!");
 module.exports = User;
