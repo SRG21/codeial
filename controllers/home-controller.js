@@ -12,7 +12,12 @@ module.exports.home = function(req, res){
 
     // populating the user
 
-    Post.find({}).populate('user').exec(function(err, posts){ // showing all the posts made on the the profile page itself
+    Post.find({}).populate('user').populate({
+        path: 'comments',
+        populate: {
+            path: 'user'
+        }
+    }).exec(function(err, posts){ // showing all the posts made on the the profile page itself
         return res.render('home',{
             title: "Codial | Home",
             posts : posts
