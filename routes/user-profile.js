@@ -4,6 +4,7 @@ const express = require('express');
 const router = express.Router();
 const passport = require('passport');
 
+
 const userController = require('../controllers/users-controller');
 
 router.get('/', passport.checkAuthentication, userController.profile); // the address here adds to the address in the router index --->> /profile/
@@ -19,6 +20,7 @@ router.post('/create-session', passport.authenticate(
 ),userController.createSession);
 
 router.get('/sign-out', userController.destroySession);
+
 
 console.log("user routes loaded!");
 module.exports = router;

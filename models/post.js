@@ -1,3 +1,5 @@
+console.log("setting up post schema.....................");
+
 const mongoose = require('mongoose');
 
 const postSchema = new mongoose.Schema({
@@ -14,4 +16,6 @@ const postSchema = new mongoose.Schema({
 });
 
 const Post = mongoose.model('Post', postSchema);
+
+console.log("post schema ready!");
 module.exports = Post;

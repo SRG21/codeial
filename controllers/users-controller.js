@@ -1,11 +1,24 @@
 console.log("Setting-up user controller..........")
 
 const User = require('../models/user');
+const Post = require('../models/post');
 
 module.exports.profile = function(req, res){
     return res.render('profile',{
-            title: "Your Profile"
+        title: "Codial | Your Profile",
+    });
+
+    
+   
+
+    // populating the user
+    /*Post.find({}).populate('user').exec(function(err, posts){ // showing all the posts made on the the profile page itself
+        return res.render('profile',{
+            title: "Codial | Your Profile",
+            posts : posts
         });
+    });*/
+
 }
 
 module.exports.signUp = function(req, res){
