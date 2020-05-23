@@ -7,19 +7,23 @@ const passport = require('passport');
 
 const userController = require('../controllers/users-controller');
 
-router.get('/', passport.checkAuthentication, userController.profile); // the address here adds to the address in the router index --->> /profile/
+
+router.get('/profile/:id', passport.checkAuthentication, userController.profiler); // the address here adds to the address in the router index --->> /profile/
+router.get('/profile', passport.checkAuthentication, userController.profile); // TEMPORARY
 router.get('/sign-in', userController.signIn);
 router.get('/sign-up', userController.signUp);
 
 router.post('/create', userController.create);
 
-// use passport as a middleware( to create session
+// use passport as a middleware to create session
 router.post('/create-session', passport.authenticate(
     'local',
-    {failureRedirect:'/profile/sign-in'},
+    {failureRedirect:'/users/sign-in'},
 ),userController.createSession);
 
 router.get('/sign-out', userController.destroySession);
+
+router.post('/update/:id', passport.checkAuthentication, userController.update);
 
 
 console.log("user routes loaded!");

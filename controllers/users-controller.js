@@ -3,16 +3,41 @@ console.log("Setting-up user controller..........")
 const User = require('../models/user');
 const Post = require('../models/post');
 
-module.exports.profile = function(req, res){
-    return res.render('profile',{
-        title: "Codial | Your Profile",
+//Loads profile page
+module.exports.profiler = function(req, res){
+    User.findById(req.params.id, function(err,user){
+        return res.render('profile',{
+            title: "Codial | Your Profile",
+            profile_user: user
+        });
     });
-
 }
 
+//Loads profile---> Temperorary
+module.exports.profile = function(req, res){
+        return res.render('profiletemp',{
+            title: "Codial | Your Profile",
+            //user: user
+        });
+}
+
+module.exports.update = function(req,res){
+    if(req.user.id == req.params.id){
+         // imp check ----> otherwise anyone with an id of other user could use inspect to edit someone elses's profile
+
+         User.findByIdAndUpdate(req.params.id, req.body, function(err, user){
+            return res.redirect('back');
+         });
+    } else{
+        return res.status(401).send('unauthorized');
+    }
+}
+
+
+// Loads Sign-Up page
 module.exports.signUp = function(req, res){
     if(req.isAuthenticated()){
-        return res.redirect('/profile');
+        return res.redirect('/users/profile');
     }
    
     return res.render('profile_sign_up', {
@@ -20,15 +45,17 @@ module.exports.signUp = function(req, res){
             });
 }
 
+//Loads Sign-In page
 module.exports.signIn = function(req, res){
     if(req.isAuthenticated()){
-        return res.redirect('/profile');
+        return res.redirect('/users/profile');
     }
 
     return res.render('profile_sign_in', {
         title: "Codial| Sign-In"
     });
 }
+
 
 module.exports.create = function(req,res){
     if(req.body.password != req.body.confirm_password){
@@ -37,7 +64,7 @@ module.exports.create = function(req,res){
 
     User.findOne({email: req.body.email}, function(err, user){ // here user is a success variable
         if(err){
-            console.log(`Error in checking for user in databse: ${err}`);
+            console.log(`Error in checking for user in database: ${err}`);
             return;
         }
 
@@ -55,12 +82,13 @@ module.exports.create = function(req,res){
 
 
 module.exports.createSession = function(req,res){
-    res.redirect('/profile');
+    res.redirect('/users/profile');
 }
 
-console.log("user controller setup complete!");
 
 module.exports.destroySession = function(req,res){
     req.logout();
-    return res.redirect('/profile/sign-in');
+    return res.redirect('/users/sign-in');
 }
+
+console.log("user controller setup complete!");
