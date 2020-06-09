@@ -25,6 +25,7 @@ app.use(sassMiddleware({ // the conversion should take place before the server s
 app.use(express.urlencoded()); // parser
 app.use(cookieParser());
 app.use(express.static('./assets')); // static content loader
+app.use('/uploads', express.static(__dirname + '/uploads')); //directory of uploads connected to a route called /upload
 
 app.use(expressLayouts);
 // extract styles and scripts from sub-pages into the layout
