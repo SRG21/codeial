@@ -72,7 +72,7 @@ module.exports.create = function(req,res){
             User.create( req.body, function(err, user){
                 if(err){console.log(`Error in creating a user in sign-up`); return;}
 
-                return res.redirect('/profile/sign-in');
+                return res.redirect('/users/sign-in');
             })
         }else { // user already exists
             return res.redirect('back');
@@ -82,13 +82,15 @@ module.exports.create = function(req,res){
 
 
 module.exports.createSession = function(req,res){
-    res.redirect('/users/profile');
+    req.flash('success', 'Logged-in successfully!');
+    res.redirect('/');
 }
 
 
 module.exports.destroySession = function(req,res){
     req.logout();
-    return res.redirect('/users/sign-in');
+    req.flash('success', 'You have been Logged-out!');
+    return res.redirect('/',);
 }
 
 console.log("user controller setup complete!");

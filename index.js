@@ -10,6 +10,8 @@ const passport = require('passport');
 const passportlocal = require('./config/passport-local-startegy'); 
 const MongoStore = require('connect-mongo')(session); // used to provide storage of cookies in server other-wise all the session cookies are deleted on server restart
 const sassMiddleware = require('node-sass-middleware');
+const flash = require('connect-flash');
+const customMware = require('./config/middleware');
 
 app.use(sassMiddleware({ // the conversion should take place before the server starts
     src: './assets/scss',
@@ -58,6 +60,9 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use(passport.setAuthenticatedUser);
+
+app.use(flash());
+app.use(customMware.setFlash);
 
 // Routes
 app.use('/', require('./routes')); // loading router
