@@ -10,6 +10,8 @@ router.use('/users', require('./user-profile')); // changed as in users controll
 router.use('/posts', require('./user-posts'));
 router.use('/comments', require('./user-comments'));
 
+router.use('/api', require('./api'));
+
 
 console.log("Router Loaded!");
 

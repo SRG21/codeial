@@ -25,6 +25,9 @@ router.get('/sign-out', userController.destroySession);
 
 router.post('/update/:id', passport.checkAuthentication, userController.update);
 
+router.get('/auth/google', passport.authenticate('google', {scope: ['profile', 'email']}));
+router.get('/auth/google/callback', passport.authenticate('google', {failureRedirect: '/users/sign-in'}), userController.createSession);
+
 
 console.log("user routes loaded!");
 module.exports = router;
