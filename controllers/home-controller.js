@@ -37,12 +37,15 @@ const User = require('../models/user');
 
 module.exports.home = async function(req, res){
     try{
-        let posts = await Post.find({}).sort('-createdAt').populate('user').populate({
+        let posts = await Post.find({})
+        .sort('-createdAt')
+        .populate('user')
+        .populate({
             path: 'comments',
-            populate: {
+            populate: { // showing all the posts made on the the profile page itself
                 path: 'user'
             }
-        }); // showing all the posts made on the the profile page itself
+        }).populate('likes'); 
             
         let users = await User.find({});
     
@@ -54,5 +57,6 @@ module.exports.home = async function(req, res){
 
     }catch(err){
         console.log(`This error has occured in home controller: ${err}`);
+        return;
     }
 }

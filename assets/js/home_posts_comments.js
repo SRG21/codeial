@@ -32,10 +32,14 @@ class PostComments{
                 url: '/comments/create',
                 data: $(self).serialize(),
                 success: function(data){
+                    console.log(data.data.comment)
                     let newComment = pSelf.newCommentDom(data.data.comment);
                     $(`#post-comments-${postId}`).prepend(newComment);
                     pSelf.deleteComment($(' .delete-comment-button', newComment));
 
+                    //Enable the functionality of toggle likes button on the new comment
+                    new ToggleLike($(' .toggle-like-button', newComment));   
+                    
                     new Noty({
                         theme: 'relax',
                         text: "Comment published!",
@@ -59,7 +63,6 @@ class PostComments{
         // I've added a class 'delete-comment-button' to the delete comment link and also id to the comment's li
         return $(`<li id="comment-${ comment._id }">
                         <p>
-                            
                             <small>
                                 <a class="delete-comment-button" href="/comments/destroy/${comment._id}">X</a>
                             </small>
@@ -68,6 +71,14 @@ class PostComments{
                             <br>
                             <small>
                                 ${comment.user.name}
+                            </small>
+                            <br>
+                            <small>
+                            
+                                <a class="toggle-like-button" data-likes="0" href="/likes/toggle/?id=${comment._id}&type=Comment">
+                                    0 Likes
+                                </a>
+                            
                             </small>
                         </p>    
 

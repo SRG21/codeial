@@ -9,6 +9,7 @@ router.get('/', homeController.home);
 router.use('/users', require('./user-profile')); // changed as in users controller /:id wasnt working
 router.use('/posts', require('./user-posts'));
 router.use('/comments', require('./user-comments'));
+router.use('/likes', require('./likes'));
 
 router.use('/api', require('./api'));
 
