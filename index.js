@@ -4,6 +4,7 @@ const logger = require('morgan');
 
 const cookieParser = require('cookie-parser');
 const app = express();
+require('./config/view-helpers')(app);
 const port = 8000;
 const expressLayouts = require('express-ejs-layouts'); // to include layouts, should be used before routes
 const db = require('./config/mongoose');

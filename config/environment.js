@@ -66,4 +66,8 @@ const production = {
 
 }
 
+//For changing environment to production
 module.exports = eval(process.env.CODIAL_ENVIRONMENT) == undefined ? development : eval(process.env.CODIAL_ENVIRONMENT);
+
+// For changing environment to development
+//module.exports = development; 
