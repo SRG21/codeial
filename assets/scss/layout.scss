@@ -1,9 +1,10 @@
 body{
     margin: 0;
-    text-align: center;
-    width: 100vw;
+    /*text-align: center;*/
+    background-color: lightgrey;
 
-    ul{
-        list-style: none;
+    #layout-main{
+        height: 100%;
+        overflow: auto;
     }
 }
