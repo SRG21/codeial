@@ -5,9 +5,7 @@
 <link rel="stylesheet" href="<%= assetPath('css/chat_box.css') %>">
 <link rel="stylesheet" href="<%= assetPath('css/post.css') %>">
 
-<!--For Development-->
-<!--<link rel="stylesheet" href="/css/home.css">
-<link rel="stylesheet" href="/css/chat_box.css">-->
+
 
 <div id="home-container">
     <section id="feed-posts">
@@ -45,9 +43,7 @@
 <script src="<%= assetPath('js/home_posts_comments.js') %>"></script>
 <script src="<%= assetPath('js/home_posts.js') %>"></script>
 
-<!--For Development-->
-<!--<script src="/js/home_posts_comments.js"></script>
-<script src="/js/home_posts.js"></script>-->
+
 
 
 <!-- import the script file for toggle likes, also run it over for the already present posts and comments on the page -->
@@ -55,8 +51,7 @@
 <!--For Production-->
 <script src="<%= assetPath('js/toggle_likes.js') %>"></script>
 
-<!--For Development-->
-<!--<script src="/js/toggle_likes.js"></script>-->
+
 
 <script>
     $('.toggle-like-button').each(function(){
@@ -70,8 +65,7 @@
 <!--For Production-->
 <script src="<%= assetPath('js/chat_engine.js') %>"></script>
 
-<!--For Development-->
-<!--<script src="/js/chat_engine.js"></script>-->
+
 
 <% if(locals.user) {%>
     <script>
