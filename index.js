@@ -32,8 +32,8 @@ const path = require('path');
 
 if(env.name == 'development'){
     app.use(sassMiddleware({ // the conversion should take place before the server starts
-        src: path.join( __dirname , env.asset_path , 'scss'),
-        dest: path.join( __dirname , env.asset_path , 'css'),
+        src: path.join(__dirname , env.asset_path , 'scss'),
+        dest: path.join(__dirname , env.asset_path , 'css'),
         debug: true,
         outputStyle: 'extended',
         prefix: '/css'
@@ -42,7 +42,7 @@ if(env.name == 'development'){
 
 
 
-app.use(express.urlencoded()); // parser
+app.use(express.urlencoded({extended:false})); // parser
 app.use(cookieParser());
 
 //app.use(express.static('./assets')); static content loader, used till testing environment
@@ -66,8 +66,8 @@ app.use(session({
     name: 'codial',
     // CHANGED :: The secret key in production
     secret: env.session_cookie_key,
-    saveUninitialized: 'false', // dont store additional data in cookie until session is not initialized
-    resave: 'false', // if the user data is already stored do I need to re-write it again 
+    saveUninitialized: false, // dont store additional data in cookie until session is not initialized
+    resave: false, // if the user data is already stored do I need to re-write it again 
     cookie: { // for timeout
         maxAge: (1000 * 60 * 100)
     },

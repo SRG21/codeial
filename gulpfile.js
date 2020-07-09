@@ -11,7 +11,7 @@ const del = require('del');
 gulp.task('css', function(done){
     console.log('css minifying');
     gulp.src('./assets/scss/**/*.scss')
-    .pipe(sass())
+    .pipe(sass().on('error', sass.logError)) // .on(error) added
     .pipe(cssnano())
     .pipe(gulp.dest('./assets/css'));
    
