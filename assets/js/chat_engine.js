@@ -4,8 +4,8 @@ class ChatEngine{ //class to send connection request
         this.chatBox = $(`#${chatBoxId}`);
         this.userEmail = userEmail;
 
-        this.socket = io.connect('http://3.21.230.241:5000'); //For deployment
-        //this.socket = io.connect('http://localhost:5000'); For local machine
+        //this.socket = io.connect('http://3.17.138.207:5000'); //For deployment
+        this.socket = io.connect('http://localhost:5000'); //For local machine
 
         if(this.userEmail){ //checking for user email and calling connection Handler
             this.connectionHandler();

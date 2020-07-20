@@ -1,35 +1,43 @@
 <li id="post-<%= post._id %>">
     <div id="new-post-list-container">
-        <% if (locals.user && locals.user.id == post.user.id){ %>
-            <small>
-                <a class="delete-post-button"  href="/posts/destroy/<%= post.id %>">X</a>
-            </small>
-        <%}%>
-        <%= post.content%>
-        <br>
-        <small>
-            <%= post.user.name %>
-        </small>
-    
-        <br>
+        
+        <div id ="post-user-container">
+            <div id="post-user-info">
+                <img src="<%= post.user.avatar %>" alt="<%= post.user.name %>" width="50" height="50">
+                <h4><%= post.user.name %></h4>
+            </div>
+            <% if (locals.user && locals.user.id == post.user.id){ %>
+                <div id="deletion-button">
+                    <a class="delete-post-button"  href="/posts/destroy/<%= post.id %>">X</a>
+                </div>
+            <%}%>
+        </div>
+
+        <div id="post-content-container">
+            <%= post.content%>
+        </div>
         <!--Display the likes of this post, if the user is logged in, then show the link to toggle likes, else, just show the count -->
-        <small>
+        <div id="likes-container">
             <% if (locals.user){ %>
                 <a class="toggle-like-button" data-likes="<%= post.likes.length %>" href="/likes/toggle/?id=<%=post._id%>&type=Post">
-                    <%= post.likes.length %> Likes
+                    <%= post.likes.length %> <i class="fas fa-thumbs-up"></i>
                 </a>
             <% }else{ %>
-                <%= post.likes.length %> Likes
+                <%= post.likes.length %> <i class="fas fa-thumbs-up"></i>
             <% } %>
-        </small>
+            </div>
 
-        <div class="post-comments">
+        <div id="post-comments">
             <% if (locals.user){ %>
-                <form id="post-<%= post._id %>-comments-form" action="/comments/create" method="POST">
-                    <input type="text" name="content" placeholder="comments here ..." required>
-                    <input type="hidden" name="post" value="<%= post._id %>">
-                    <input type="submit" value="Add Comment">
-                </form>
+                
+                    <form id="post-<%= post._id %>-comments-form" action="/comments/create" method="POST">
+                        <div id="comment-input-area">
+                            <img src="<%= user.avatar %>" alt="<%= user.name %>" width="40" height="40">
+                            <input id="comment-text" type="text" name="content" placeholder="comments here ..." required>
+                            <input type="hidden" name="post" value="<%= post._id %>">
+                            <input type="submit" value="Comment">
+                        </div>
+                    </form>
             <%}%>
             <div class="post-comments-list">
                 <ul id="post-comments-<%= post._id %>">

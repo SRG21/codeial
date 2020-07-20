@@ -12,6 +12,8 @@
                 data: newPostForm.serialize(),
                 success: function(data){
                     let newPost = newPostDom(data.data.post);
+                    /*let imgURL = newPostDom(data.data.post.user.avatar);
+                    console.log(imgURL);*/
                     $('#posts-list-container>ul').prepend(newPost);
 
                     // note the space --> it means delete-post-button class inside the newly created object
@@ -41,37 +43,47 @@
     // method to create a post in DOM
     let newPostDom = function(post){
         return $(`<li id="post-${post._id}">
-                        <small>
-                            <a class="delete-post-button"  href="/posts/destroy/${post._id}">X</a>
-                        </small>
-                        <p>
+                   <div id="new-post-list-container">
+                        <div id ="post-user-container">
+                            <div id="post-user-info">
+                                <img src="${post.user.avatar}" alt="${post.user.name}" width="50" height="50">
+                                <h4>${post.user.name}</h4>
+                            </div>
+            
+                            <div id="deletion-button">
+                                <a class="delete-post-button"  href="/posts/destroy/${post._id}">X</a>
+                            </div>
+                        </div>
+
+                        <div id="post-content-container">
                             ${post.content}
-                            <br>
-                            <small>
-                                ${post.user.name}
-                            </small>
-                            <br>
-                            <small>
-                            
-                                <a class="toggle-like-button" data-likes="0" href="/likes/toggle/?id=${post._id}&type=Post">
-                                    0 Likes
-                                </a>
-                            </small>
-                        </p>
-                        <div class="post-comments">
-                                
-                                <form id="post-${ post._id }-comments-form" action="/comments/create" method="POST">
-                                    <input type="text" name="content" placeholder="comments here ..." required>
+                        </div>
+
+                        <div id="likes-container">
+                            <a class="toggle-like-button" data-likes="${post.likes.length}" href="/likes/toggle/?id=${post._id}&type=Post">
+                                ${post.likes.length} <i class="fas fa-thumbs-up"></i>
+                            </a>
+                        </div>
+
+                        <div id="post-comments">
+                            <form id="post-${post._id}-comments-form" action="/comments/create" method="POST">
+                                <div id="comment-input-area">
+                                    <img src="${post.user.avatar}" alt="${post.user.name}" width="40" height="40">
+                                    <input id="comment-text" type="text" name="content" placeholder="comments here ..." required>
                                     <input type="hidden" name="post" value="${post._id}">
-                                    <input type="submit" value="Add Comment">
-                                </form>
+                                    <input type="submit" value="Comment">
+                                </div>
+                            </form>
+            
                             <div class="post-comments-list">
                                 <ul id="post-comments-${post._id}">
+        
                                 </ul>
                             </div>
                         </div>
+                    </div>
                 </li>`);
-    }
+            }
 
     // Method to delete a post from DOM
     let deletePost = function(deleteLink){

@@ -12,7 +12,7 @@ const accessLogStream = rfs.createStream('access.log', {
 
 const development = {
     name: 'development',
-    asset_path: '/assets',
+    asset_path: './assets',
     session_cookie_key: 'blahsomething',
     db: 'codial_development',
     smtp: {
@@ -26,8 +26,8 @@ const development = {
         }
     },
 
-    google_client_id: "901872106544-9v5s9rnp2kvl8huhi1mal22bgrp8fmac.apps.googleusercontent.com",
-    google_client_secret: "PM-JUpJ-E6u5mMYVcPUjh7on",
+    google_client_id: "453815369088-3l1v2ipvqk5gh6drnji7tsdi3l078rhe.apps.googleusercontent.com",
+    google_client_secret: "6wE_2hTZB5WjtQBAoZ9bdUso",
     google_call_back_url: "http://localhost:8000/users/auth/google/callback",
 
     jwt_secret_key: 'codeial',
@@ -67,7 +67,7 @@ const production = {
 }
 
 //For changing environment to production
-module.exports = eval(process.env.CODIAL_ENVIRONMENT) == undefined ? development : eval(process.env.CODIAL_ENVIRONMENT);
+//module.exports = eval(process.env.CODIAL_ENVIRONMENT) == undefined ? development : eval(process.env.CODIAL_ENVIRONMENT);
 
 // For changing environment to development
-//module.exports = development; 
+module.exports = development; 

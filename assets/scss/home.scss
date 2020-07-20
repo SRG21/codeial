@@ -1,13 +1,40 @@
 #home-container{
+    margin: 0;
     display: flex;
     
+    
     #feed-posts{
-        width: 70%;
-        padding: 10px;
+        width: 60%;
         text-align: center;
+        margin-right: 5%;
+
+        #post-input-area{
+            margin-left: 5%;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            width:95%;
+            height: 10vh;
+            border: 2px solid white;
+            border-radius: 20px;
+            background-color: white;
+
+            textarea{
+                border: none;
+                width:75%;
+                height: 100%;
+                background-color: #e4e3e3;
+                font-size: 30px;
+            }
+
+            input{
+                width: 10%;
+                height: 50%;
+            }
+        }
         
         #posts-list-container{
-            padding: 5px;
+            padding: 1%;
 
             ul{
                 list-style: none;
@@ -16,9 +43,9 @@
     }
 
     #user-friends{
-        width: 30%;
-        padding: 10px;
-        border-left: 1px solid lightgrey;
+        width: 25%;
+        padding: 2%;
+        border-left: 1px dashed grey;
         height: 100%;
     }
 }

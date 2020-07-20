@@ -62,25 +62,25 @@ class PostComments{
     newCommentDom(comment){
         // I've added a class 'delete-comment-button' to the delete comment link and also id to the comment's li
         return $(`<li id="comment-${ comment._id }">
-                        <p>
-                            <small>
-                                <a class="delete-comment-button" href="/comments/destroy/${comment._id}">X</a>
-                            </small>
-                            
+                    <div id="new-comment-list-container">
+                        <div id="comment-user-info">
+                            <img src="${comment.user.avatar}" alt="${comment.user.name}" width="40" height="40">
+                            ${comment.user.name}
+                        </div>
+
+                        <div id="comment-content-container">
                             ${comment.content}
-                            <br>
-                            <small>
-                                ${comment.user.name}
-                            </small>
-                            <br>
-                            <small>
-                            
-                                <a class="toggle-like-button" data-likes="0" href="/likes/toggle/?id=${comment._id}&type=Comment">
-                                    0 Likes
+                        </div>
+
+                        <div id="comment-likes-container">
+                            <div id="likes-button">
+                                <a class="toggle-like-button" data-likes="${comment.likes.length}" href="/likes/toggle/?id=${comment._id}&type=Comment">
+                                    ${comment.likes.length} <i class="fas fa-thumbs-up"></i>
                                 </a>
-                            
-                            </small>
-                        </p>    
+                            </div>
+                            <a class="delete-comment-button" href="/comments/destroy/${comment._id}">x</a>
+                        </div>
+                    </div>
 
                 </li>`);
     }

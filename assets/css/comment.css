@@ -1,0 +1,45 @@
+#new-comment-list-container {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid white;
+  border-radius: 20px;
+  margin: 2%, 2%, 0, 2%;
+  margin-bottom: 1%;
+  background-color: #e4e3e3;
+  min-height: 7vh;
+  width: 100%;
+  padding: 1%;
+  align-items: center; }
+  #new-comment-list-container a {
+    text-decoration: none; }
+  #new-comment-list-container #comment-user-info {
+    display: flex;
+    align-self: flex-start;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 30%;
+    margin-left: 1%;
+    font-weight: bolder;
+    font-size: 15px;
+    color: #84a9ac;
+    margin-left: 0.1%; }
+  #new-comment-list-container #comment-content-container {
+    display: flex;
+    width: 90%;
+    min-height: 20%;
+    margin-left: 15%;
+    font-size: 17px;
+    font-weight: bolder;
+    color: #393e46;
+    margin-left: 1%;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1%; }
+  #new-comment-list-container #comment-likes-container {
+    width: 90%;
+    display: flex;
+    justify-content: flex-end; }
+    #new-comment-list-container #comment-likes-container #likes-button {
+      margin-right: 45%; }
+    #new-comment-list-container #comment-likes-container .delete-comment-button {
+      font-weight: bold; }

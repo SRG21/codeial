@@ -1,1 +1,7 @@
-body{margin:0;background-color:#d3d3d3}body #layout-main{height:100%;overflow:auto}
+body {
+  margin: 0;
+  background-color: #e4e3e3;
+  font-family: "segoe UI"; }
+  body #layout-main {
+    height: 100%;
+    overflow: auto; }

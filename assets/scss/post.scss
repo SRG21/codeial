@@ -1,6 +1,104 @@
 #new-post-list-container{
-    border: 2px solid grey;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid white;
     border-radius: 20px;
-    margin: 5px;
+    margin: 2%, 2%, 0, 2%;
+    margin-bottom: 1%;
     background-color: white;
+    min-height: 10vh;
+    width: 100%;
+    padding: 1%;
+    align-items: center;
+
+    a{
+        text-decoration: none;
+    }
+    
+
+    #post-user-container{
+        display: flex;
+        width: 100%;
+        color: #84a9ac;
+        justify-content: space-between;
+
+        #post-user-info{
+            display: flex;
+            width: 50%;
+            h4{
+                margin-left: 1%;
+                font-size: 14px;
+            }
+        }
+
+        #deletion-button{
+            font-weight: bold;
+            a{
+                text-decoration: none;
+            }
+        }
+
+    }
+
+    #post-content-container{
+        display: flex;
+        width: 90%;
+        min-height: 20%;
+        margin-left: 15%;
+        font-size: 17px;
+        font-weight: bolder;
+        color: #393e46;
+        margin-left: 1%;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 1%;
+
+    }
+
+    #likes-container{
+        width: 90%;
+        border-top: 1px solid lightgrey;
+    }
+
+    #post-comments{
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 5%;
+
+        #comment-input-area{
+            margin-left: 8%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1%;
+            padding: 0.5%;
+            width:80%;
+            height: 7vh;
+            border: 2px solid white;
+            border-radius: 20px;
+            background-color:  #e4e3e3;
+
+                input{
+                    width: 12%;
+                    height: 50%;
+                }
+
+                #comment-text{
+                    border: none;
+                    width:80%;
+                    height: 100%;
+                    background-color: white;
+                    font-size: 20px;
+                }
+
+                img{
+                    align-self: center;
+                }
+        }
+
+        .post-comments-list{
+            width: 90%;
+        }
+    }
 }
