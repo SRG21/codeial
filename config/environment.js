@@ -21,13 +21,13 @@ const development = {
         port: 587,
         secure: false,
         auth: {
-            user: 'sankalp.lbd',
-            pass: 'bharatmatakijai'
+            user: 'sankalp.lbs',
+            pass: 'githubissweet'
         }
     },
 
     google_client_id: "453815369088-3l1v2ipvqk5gh6drnji7tsdi3l078rhe.apps.googleusercontent.com",
-    google_client_secret: "6wE_2hTZB5WjtQBAoZ9bdUso",
+    google_client_secret: "6wE_2hTZB5WjtQBAoZ9bdUwq",
     google_call_back_url: "http://localhost:8000/users/auth/google/callback",
 
     jwt_secret_key: 'codeial',
